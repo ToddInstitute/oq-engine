@@ -374,7 +374,9 @@ class SiteCollection(object):
             return None
         # extract indices of Trues from the mask
         indices, = mask.nonzero()
-        return self.filtered(indices)
+        sc = self.filtered(indices)
+        sc.mask = mask
+        return sc
 
     def within(self, region):
         """
